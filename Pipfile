@@ -4,7 +4,20 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-stable-baselines3 = {extras = ["extra"], version = "*"}
+box2d-py = "==2.3.8"
+pybullet = "*"
+gym-minigrid = "*"
+scikit-optimize = "*"
+optuna = "*"
+pytablewriter = "*"
+seaborn = "*"
+sb3-contrib = ">=1.0"
+PyYAML = ">=5.1"
+stable-baselines3 = {version = ">=1.0", extras = ["docs", "extra", "tests"]}
+ipython = "*"
+gym = {extras = ["full"], version = "*"}
+black = "*"
+pybulletgym = {editable = true, path = "./pybullet-gym"}
 
 [dev-packages]
 

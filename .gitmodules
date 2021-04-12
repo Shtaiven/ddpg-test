@@ -1,0 +1,9 @@
+[submodule "rl-baselines3-zoo"]
+	path = rl-baselines3-zoo
+	url = https://github.com/DLR-RM/rl-baselines3-zoo
+[submodule "pybullet-gym"]
+	path = pybullet-gym
+	url = https://github.com/benelot/pybullet-gym
+[submodule "robo-gym"]
+	path = robo-gym
+	url = git@github.com:jr-robotics/robo-gym.git
