@@ -18,8 +18,12 @@ ipython = "*"
 gym = {extras = ["full"], version = "*"}
 black = "*"
 pybulletgym = {editable = true, path = "./pybullet-gym"}
+robo-gym = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true
