@@ -14,6 +14,7 @@ def main(load_model='', save_model='', timesteps=10000, use_td3=False):
     model_type = DDPG
     if use_td3:
         model_type = TD3
+    print(f'Using model type {model_type.__name__}')
 
     # Needed to display the environment
     print("Env render")
