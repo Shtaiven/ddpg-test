@@ -10,7 +10,10 @@ This experiment attempts to learn a motion planning task for a 2 joint robotic a
 cd ddpg-test
 git submodule update --init --recursive
 pipenv shell
-pipenv update
+pipenv update --pre --clean
+cd pybullet-gym
+pip install -e .
+cd ..
 ```
 
 ## Usage
