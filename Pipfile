@@ -13,11 +13,9 @@ pytablewriter = "*"
 seaborn = "*"
 sb3-contrib = ">=1.0"
 PyYAML = ">=5.1"
-stable-baselines3 = {version = ">=1.0", extras = ["docs", "extra", "tests"]}
 ipython = "*"
-gym = {extras = ["full"], version = "*"}
+gym = "*"
 black = "*"
-pybulletgym = {editable = true, path = "./pybullet-gym"}
 
 [dev-packages]
 
@@ -26,3 +24,10 @@ python_version = "3.8"
 
 [pipenv]
 allow_prereleases = true
+
+[packages.stable-baselines3]
+extras = [ "extras",]
+
+[packages.pybulletgym]
+editable = true
+path = "./pybullet-gym"

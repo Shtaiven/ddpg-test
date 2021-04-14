@@ -10,7 +10,7 @@ This experiment attempts to learn a motion planning task for a 2 joint robotic a
 cd ddpg-test
 git submodule update --init --recursive
 pipenv shell
-pipenv update --pre --clean
+pipenv update --pre --clear
 cd pybullet-gym
 pip install -e .
 cd ..
@@ -19,5 +19,24 @@ cd ..
 ## Usage
 
 ```bash
-./ddpg-test.py
+python ddpg-test.py
+```
+
+Optional arguments:
+
+```text
+  -h, --help            show this help message and exit
+  -f FILENAME, --file FILENAME
+                        load model data from specified zip file
+  -o FILENAME, --output FILENAME
+                        save model data to specified zip file
+  -t N, --timesteps N   train for N timesteps
+```
+
+## Common Issues
+
+If `pipenv` refuses to install dependencies, they can be installed using
+
+```bash
+pipenv update --pre --skip-lock
 ```
