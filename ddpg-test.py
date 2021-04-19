@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from typing import Type, Union
 
 import gym
 import time
@@ -9,6 +10,10 @@ import numpy as np
 
 from stable_baselines3 import DDPG, TD3
 from stable_baselines3.common.noise import NormalActionNoise, OrnsteinUhlenbeckActionNoise
+from torch import nn
+
+from policies import CustomTD3Policy
+
 
 def main(load_model='', save_model='', timesteps=100000, use_td3=False):
     env = gym.make('ReacherBulletEnv-v0')
@@ -41,7 +46,7 @@ def main(load_model='', save_model='', timesteps=100000, use_td3=False):
         #     train_freq: 1000
         #     gradient_steps: 1000
         #     policy_kwargs: "dict(layers=[400, 300])"
-        model = model_type("MlpPolicy",
+        model = model_type(CustomTD3Policy,
                            env,
                            learning_rate=float(1e-3),
                            learning_starts=1000000,

@@ -27,7 +27,3 @@ allow_prereleases = true
 
 [packages.stable-baselines3]
 extras = [ "extras",]
-
-[packages.pybulletgym]
-editable = true
-path = "./pybullet-gym"
