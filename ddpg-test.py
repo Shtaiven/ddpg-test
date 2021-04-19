@@ -2,7 +2,7 @@
 import gym
 import time
 import argparse
-import pybullet_envs  # provides ReacherBulletEnv-v0
+import custom_envs  # provides CustomReacherBulletEnv-v0
 import numpy as np
 
 from stable_baselines3 import DDPG, TD3
@@ -13,7 +13,7 @@ from policies import CustomTD3Policy
 
 
 def main(load_model='', save_model='', timesteps=100000, use_td3=False):
-    env = gym.make('ReacherBulletEnv-v0')
+    env = gym.make('CustomReacherBulletEnv-v0')
     model_type = DDPG
     if use_td3:
         model_type = TD3
