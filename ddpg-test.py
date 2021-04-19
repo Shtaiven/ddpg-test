@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
-from typing import Type, Union
-
 import gym
 import time
 import argparse
-# import pybulletgym  # provides ReacherPyBulletEnv-v0
 import pybullet_envs  # provides ReacherBulletEnv-v0
 import numpy as np
 
@@ -74,14 +71,17 @@ def main(load_model='', save_model='', timesteps=100000, use_td3=False):
     dones = False
     dones_prev = dones
     while True:
-        if not dones:
-            action, _states = model.predict(obs)
-            obs, rewards, dones, info = env.step(action)
-            env.render("human")
-            if dones != dones_prev:
-                print('Done')
-            dones_prev = dones
-        time.sleep(0.1)
+        action, _states = model.predict(obs)
+        obs, rewards, dones, info = env.step(action)
+        env.render("human")
+        if dones != dones_prev:
+            # reset the env
+            print('Done')
+            dones = False
+            time.sleep(2.99)
+            obs = env.reset()
+        dones_prev = dones
+        time.sleep(0.01)
 
 if __name__ == "__main__":
     # Parse arguments
