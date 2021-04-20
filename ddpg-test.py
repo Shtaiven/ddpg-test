@@ -21,7 +21,7 @@ def main(load_model='', save_model='', timesteps=100000, use_td3=False):
 
     # Needed to display the environment
     print("Env render")
-    env.render("human")
+    env.render("human", close=True)
 
     if not load_model or not isinstance(load_model, str):
         # The noise objects for DDPG
@@ -56,11 +56,12 @@ def main(load_model='', save_model='', timesteps=100000, use_td3=False):
                            verbose=1)
 
         print(f'Training for {timesteps} timesteps')
-        model.learn(total_timesteps=timesteps, log_interval=10)
+        model.learn(total_timesteps=timesteps,
+                    eval_env=env,
+                    log_interval=10)
         if save_model and isinstance(save_model, str):
             print(f'Saving trained model to {save_model}')
             model.save(save_model)
-        env = model.get_env()
 
     else:
         print(f'Loading model from {load_model}')

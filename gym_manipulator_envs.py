@@ -55,8 +55,22 @@ class ReacherBulletEnv(MJCFBaseBulletEnv):
             float(electricity_cost),
             float(stuck_joint_cost)
         ]
+        target_distance = np.linalg.norm(self.robot.to_target_vec)
+
+        # taken from OpenAI Reacher-v2 env created using MuJoCo
+        # https://github.com/openai/gym/blob/master/gym/envs/mujoco/reacher.py
+        # distance_cost = -target_distance
+        # action_cost = -np.square(a).sum()
+        # self.rewards = [
+        #     float(distance_cost),
+        #     float(action_cost)
+        # ]
+
         self.HUD(state, a, False)
-        return state, sum(self.rewards), False, {}
+
+        done = target_distance < 0.01  # in cm?
+
+        return state, sum(self.rewards), done, {}
 
     def camera_adjust(self):
         x, y, z = [0., 0., 0.]
