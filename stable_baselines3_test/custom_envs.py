@@ -11,7 +11,7 @@ def register(id, *args, **kvargs):
 
 register(
     id='CustomReacherBulletEnv-v0',
-    entry_point='gym_manipulator_envs:ReacherBulletEnv',
+    entry_point='stable_baselines3_test.gym_manipulator_envs:ReacherBulletEnv',
     max_episode_steps=150,
     reward_threshold=18.0,
 )
