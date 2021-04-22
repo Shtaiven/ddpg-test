@@ -43,15 +43,15 @@ def main(load_model=''):
     obs = env.reset()
     dones = False
     dones_prev = dones
+    print("Ctrl-C to quit")
     while True:
         action = policy.select_action(obs)
         obs, rewards, dones, info = env.step(action)
         env.render("human")
         if dones != dones_prev:
             # reset the env
-            print('Done')
             dones = False
-            time.sleep(2.99)
+            time.sleep(0.99)
             obs = env.reset()
         dones_prev = dones
         time.sleep(0.01)
