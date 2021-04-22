@@ -1,7 +1,7 @@
 from pybullet_envs.scene_abstract import SingleRobotEmptyScene
 from pybullet_envs.env_bases import MJCFBaseBulletEnv
 import numpy as np
-from pybullet_envs.robot_manipulators import Reacher
+from robot_manipulators import Reacher
 from pybullet_envs.env_bases import Camera
 
 
@@ -36,6 +36,23 @@ class ReacherBulletEnv(MJCFBaseBulletEnv):
 
     def step(self, a):
         assert (not self.scene.multiplayer)
+
+        # ---- Begin Reacher-v2 ----
+        # vec = self.robot.to_target_vec
+        # reward_dist = - np.linalg.norm(vec)
+        # reward_ctrl = - np.square(a).sum()
+        # reward = reward_dist + reward_ctrl
+
+        # self.robot.apply_action(a)
+        # self.scene.global_step()
+
+        # ob = self.robot.calc_state()
+        # self.HUD(ob, a, False)
+        # done = False
+        # return ob, reward, done, dict(reward_dist=reward_dist, reward_ctrl=reward_ctrl)
+        # ---- End Reacher-v2 ----
+
+        # ---- Begin original ReacherBulletEnv ----
         self.robot.apply_action(a)
         self.scene.global_step()
 
@@ -55,22 +72,9 @@ class ReacherBulletEnv(MJCFBaseBulletEnv):
             float(electricity_cost),
             float(stuck_joint_cost)
         ]
-        target_distance = np.linalg.norm(self.robot.to_target_vec)
-
-        # taken from OpenAI Reacher-v2 env created using MuJoCo
-        # https://github.com/openai/gym/blob/master/gym/envs/mujoco/reacher.py
-        # distance_cost = -target_distance
-        # action_cost = -np.square(a).sum()
-        # self.rewards = [
-        #     float(distance_cost),
-        #     float(action_cost)
-        # ]
-
         self.HUD(state, a, False)
-
-        done = target_distance < 0.01  # in cm?
-
-        return state, sum(self.rewards), done, {}
+        return state, sum(self.rewards), False, {}
+        # ---- End original ReacherBulletEnv ----
 
     def camera_adjust(self):
         x, y, z = [0., 0., 0.]
