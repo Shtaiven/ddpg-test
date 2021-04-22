@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 
-import numpy as np
-import torch
 import gym
-import argparse
-import os
 import time
 
 import sfujimoto_test.TD3 as TD3
