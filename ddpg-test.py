@@ -2,14 +2,14 @@
 import gym
 import time
 import argparse
-import custom_envs  # provides CustomReacherBulletEnv-v0
+import stable_baselines3_test.custom_envs  # provides CustomReacherBulletEnv-v0
 import numpy as np
 
 from stable_baselines3 import DDPG, TD3
 from stable_baselines3.common.noise import NormalActionNoise, OrnsteinUhlenbeckActionNoise
 from torch import nn
 
-from policies import CustomTD3Policy
+from stable_baselines3_test.policies import CustomTD3Policy
 
 
 def main(load_model='', save_model='', timesteps=100000, use_td3=False):

@@ -31,8 +31,6 @@ python main.py --env ReacherBulletEnv-v0 --save_model
 ## Usage stable_baselines3_test
 
 ```bash
-cd stable_baselines3_test
-
 # train a model and view it
 python ddpg-test.py
 
