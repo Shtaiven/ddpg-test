@@ -11,12 +11,24 @@ cd ddpg-test
 git submodule update --init --recursive
 pipenv shell
 pipenv update --pre --clear
-cd pybullet-gym
-pip install -e .
-cd ..
 ```
 
-## Usage
+## Enjoy pretrained model (sfujimoto TD3)
+
+```bash
+python enjoy.py
+```
+
+## Usage sfujimoto_test
+
+```bash
+cd sfujimoto_test
+
+# train a model
+python main.py --env ReacherBulletEnv-v0 --save_model
+```
+
+## Usage stable_baselines3_test
 
 ```bash
 # train a model and view it
